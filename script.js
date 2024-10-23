@@ -28,12 +28,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function addEntry() {
         var entry = document.createElement("li");
-        h3.remove();
         if (input.value !== "") {
             entry.innerHTML = input.value + " <button class='delete-button'>X</button>";
             todoList.append(entry);
             saveTodos();
             clearField();
+            if (h3) {
+                h3.remove();
+            }
         } else {
             input.classList.add("vibrate");
             setTimeout(() => {
@@ -52,6 +54,12 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             entry.remove();
             saveTodos();
+            if (todoList.children.length === 0) {
+                var newH3 = document.createElement("h3");
+                newH3.id = "h3";
+                newH3.textContent = "Note down something...";
+                document.querySelector(".apptile").insertBefore(newH3, todoList);
+            }
         }, 1000);
     }
 
