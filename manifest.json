@@ -4,8 +4,7 @@
   "version": "1.0",
   "description": "An aesthetically pleasing simple to use To-Do List App",
   "permissions": [
-    "storage",
-    "activeTab"
+    "storage"
   ],
   "action": {
     "default_popup": "index.html",
