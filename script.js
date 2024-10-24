@@ -20,6 +20,13 @@ document.addEventListener('DOMContentLoaded', function () {
         clearField();
     });
 
+    input.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            addEntry();
+            clearField();
+        }
+    });
+
     todoList.addEventListener('click', function(event) {
         if (event.target && event.target.classList.contains('delete-button')) {
             deleteEntry(event);
