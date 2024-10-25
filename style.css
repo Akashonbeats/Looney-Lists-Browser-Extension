@@ -31,14 +31,80 @@
         filter: blur(50px);
     }
 }
+@keyframes redvibrate{
+    0% {
+        transform: translateX(0px);
+        box-shadow: rgba(255, 0, 0, 0.5) 0px 0px 30px;
+        outline: 2px dashed rgba(255, 0, 0, 0.750);
+        background-color: rgba(255, 0, 0, 0.237);
+    }
+    20% {
+        transform: translateX(3px);
+    }
+    25% {
+        transform: translateX(5px);
+    }
+    30% {
+        transform: translateX(3px);
+    }
+    35% {
+        transform: translateX(0px);
+    }
+    40% {
+        transform: translateX(-3px);
+    }
+    45% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(3px);
+    }
+    55% {
+        transform: translateX(0px);
+    }
+    60% {
+        transform: translateX(-3px);
+    }
+    65% {
+        transform: translateX(0px);
+    }
+    70% {
+        transform: translateX(3px);
+    }
+    75% {
+        transform: translateX(0px);
+    }
+    80% {
+        transform: translateX(-3px);
+    }
+    85% {
+        transform: translateX(0px);
+    }
+    90% {
+        transform: translateX(3px);
+    }
+    95% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(0px);
+        box-shadow: rgba(255, 0, 0, 0.5) 0px 0px 30px;
+        outline: 2px dashed rgba(255, 0, 0, 0.237);
+        background-color: rgba(255, 0, 0, 0.237);
+    }
+}
+.redvibrate{
+    animation: redvibrate 1s infinite;
+    transition-duration: 0.7s;
+}
 html{
-    width: 330px;
+    width: 340px;
     height: auto;
 }
 body{
     border-radius: 15px;
     background-color: #fff9c7;
-    width: 330px;
+    width: 340px;
     height: auto;
     margin: 0;
     padding: 0;
@@ -107,7 +173,7 @@ p{
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 
 }
 input{
@@ -148,6 +214,12 @@ button:hover{
     box-shadow: #1e93a7 0px 0px 30px;
     transition-duration: 0.4s;
 }
+button:active{
+    background-color: #1e93a7;
+    color: #fff9c7;
+    box-shadow: #1e93a7 0px 0px 30px;
+    transition-duration: 0.1s;
+}
 h3{
     color: #1e92a774;
     font-size: 2rem;
@@ -162,7 +234,8 @@ ul{
 }
 li{
     display: flex;
-    align-items: center;
+    align-items: left;
+    gap: 10px;
     font-size: 1.3rem;
     user-select: text;
     -webkit-user-select: text;
@@ -194,6 +267,12 @@ li button{
 }
 li button:hover{
     color: #1e93a7;
+}
+li button:active{
+    color: rgba(255, 0, 0, 0.5);
+    outline: 2px dashed rgba(255, 0, 0, 0.5);
+    background-color: rgba(255, 0, 0, 0.237);
+    transition-duration: 0.1s;
 }
 footer{
     width: 100%;

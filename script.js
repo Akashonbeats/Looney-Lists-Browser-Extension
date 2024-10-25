@@ -44,9 +44,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 h3.remove();
             }
         } else {
-            input.classList.add("vibrate");
+            input.classList.add("redvibrate");
             setTimeout(() => {
-                input.classList.remove("vibrate");
+                input.classList.remove("redvibrate");
             }, 500);
         }
     }
