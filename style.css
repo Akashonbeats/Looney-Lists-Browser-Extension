@@ -31,21 +31,23 @@
         filter: blur(50px);
     }
 }
+html{
+    width: 330px;
+    height: auto;
+}
 body{
     border-radius: 15px;
     background-color: #fff9c7;
-    width: 350px;
+    width: 330px;
     height: auto;
     margin: 0;
     padding: 0;
+    padding-top: 7px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     font-family: "Style Script", cursive;
     font-weight: 900;
-    background-color: #000000;
     user-select: none;
     -webkit-user-select: none;
 }
@@ -74,34 +76,35 @@ p{
     font-weight: 500;
     margin-bottom: 20px;
 }
-.appwrapper{
+/* .appwrapper{
     padding: 7px;
     padding-top: 10px;
     background-color: #fff9c7;
-    /* animation: linear 1s custom; */
+    animation: linear 1s custom;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 15px;
-}
+} */
 .apptile{
     background-color: #fff9c7;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 15px;
+    margin-bottom: 7px;
+    margin-inline: 7px;
     border-style: dashed;
     border-color: #11dbff;
     border-radius: 20px;
     overflow: auto;
     scrollbar-width: none;
     transition-duration: 2s;
-    height: 500px;
+    height: 550px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
 .inputwrapper{
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -149,7 +152,7 @@ h3{
     color: #1e92a774;
     font-size: 2rem;
     text-align: center;
-    margin-top: 120px;
+    margin-top: 150px;
     margin-inline: 20px;
 }
 ul{
@@ -193,8 +196,6 @@ li button:hover{
     color: #1e93a7;
 }
 footer{
-    position: absolute;
-    bottom: 0;
     width: 100%;
     padding-block: 6px;
     text-align: center;
