@@ -1,6 +1,6 @@
 ﻿# Looney Lists
  
-An aesthetically pleasing To-Do List manager
+An aesthetically pleasing To-Do List manager. Available as a Edge browser extension.
 
 ## Installation
 
