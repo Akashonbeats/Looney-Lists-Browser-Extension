@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     savedTodos.forEach(function(todo) {
         var entry = document.createElement("li");
+        entry.draggable = true;
         entry.innerHTML = todo + " <button class='delete-button'>X</button>";
+        addDragAndDropHandlers(entry);
         todoList.append(entry);
     });
 
@@ -35,8 +37,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function addEntry() {
         var entry = document.createElement("li");
+        entry.draggable = true;
         if (input.value !== "") {
             entry.innerHTML = input.value + " <button class='delete-button'>X</button>";
+            addDragAndDropHandlers(entry);
             todoList.append(entry);
             saveTodos();
             clearField();
@@ -76,5 +80,60 @@ document.addEventListener('DOMContentLoaded', function () {
             todos.push(li.textContent.replace(" X", ""));
         });
         localStorage.setItem("todos", JSON.stringify(todos));
+    }
+
+    // For the draggable functionality for the list elements
+    
+    function addDragAndDropHandlers(entry) {
+        entry.addEventListener('dragstart', handleDragStart, false);
+        entry.addEventListener('dragenter', handleDragEnter, false);
+        entry.addEventListener('dragover', handleDragOver, false);
+        entry.addEventListener('dragleave', handleDragLeave, false);
+        entry.addEventListener('drop', handleDrop, false);
+        entry.addEventListener('dragend', handleDragEnd, false);
+    }
+
+    function handleDragStart(e) {
+        this.style.opacity = '0.4';
+        dragSrcEl = this;
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', this.innerHTML);
+    }
+
+    function handleDragEnter(e) {
+        this.classList.add('over');
+    }
+
+    function handleDragOver(e) {
+        if (e.preventDefault) {
+            e.preventDefault();
+        }
+        e.dataTransfer.dropEffect = 'move';
+        return false;
+    }
+
+    function handleDragLeave(e) {
+        this.classList.remove('over');
+    }
+
+    function handleDrop(e) {
+        if (e.stopPropagation) {
+            e.stopPropagation();
+        }
+        if (dragSrcEl != this) {
+            dragSrcEl.innerHTML = this.innerHTML;
+            this.innerHTML = e.dataTransfer.getData('text/html');
+            addDragAndDropHandlers(dragSrcEl);
+            addDragAndDropHandlers(this);
+            saveTodos();
+        }
+        return false;
+    }
+
+    function handleDragEnd(e) {
+        this.style.opacity = '1';
+        todoList.querySelectorAll('li').forEach(function (item) {
+            item.classList.remove('over');
+        });
     }
 });

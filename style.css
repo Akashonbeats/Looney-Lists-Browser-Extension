@@ -1,16 +1,3 @@
-/* @keyframes custom {
-    0% {
-        opacity: 0;
-        filter: blur(70px);
-    }
-    50% {
-        opacity: 0.2;
-    }
-    100% {
-        opacity: 1;
-        filter: blur(0px);
-    }
-} */
 @keyframes slideinwards {
     0% {
         transform: translateX(-100px);
@@ -137,22 +124,12 @@ h1{
          3px  3px 2px #11dbff;
 }
 p{
+    font-size: 1rem;
     color: #1e93a7;
-    margin-top: 10px;
+    margin-top: 0px !important;
     font-weight: 500;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
-/* .appwrapper{
-    padding: 7px;
-    padding-top: 10px;
-    background-color: #fff9c7;
-    animation: linear 1s custom;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 15px;
-} */
 .apptile{
     background-color: #fff9c7;
     padding: 15px;
@@ -178,7 +155,7 @@ p{
 }
 input{
     font-family: "Gloria Hallelujah", cursive;
-    width: 170px;
+    width: 100%;
     color: #1e93a7;
     background-color: rgba(0, 255, 255, 0.237);
     outline: 2px dashed #1e93a7;
@@ -233,17 +210,25 @@ ul{
     list-style: none;
 }
 li{
+    cursor: move;
     display: flex;
-    align-items: left;
+    justify-content: space-between;
     gap: 10px;
     font-size: 1.3rem;
     user-select: text;
     -webkit-user-select: text;
     color:#1e93a7;
-    margin-block: 20px;
+    background-color: rgba(0, 255, 255, 0.237);
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-block: 10px;
     font-weight: 500;
     text-wrap: wrap;
     animation: cubic-bezier(0.68, -0.55, 0.27, 1.55) 1s slideinwards;
+}
+li.over {
+    border: 2px dashed #1e93a7;
 }
 li::selection {
     background: #1e93a7;
@@ -253,16 +238,18 @@ li.removing {
     animation: cubic-bezier(0.68, -0.55, 0.27, 1.55) 1s slideoutwards;
 }
 li button{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: inherit;
+    line-height: 0.1;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    height: 30px;
+    height: auto;
     width: 30px;
-    color: #1e92a77b;
+    color: #1e92a7b3;
     background-color: rgba(0, 255, 255, 0.237);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) !important;
     user-select: none;
-    box-shadow: none !important;
+    box-shadow: none;
     -webkit-user-select: none;
 }
 li button:hover{
