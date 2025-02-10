@@ -1,11 +1,16 @@
 @keyframes slideinwards {
     0% {
-        transform: translateX(-100px);
+        transform: scale(0.9);
         filter: blur(10px);
     }
-    100% {
-        transform: translateX(0px);
+    50%{
+        transform: scale(1.05);
+    }
+    95%{
         filter: blur(0px);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 @keyframes slideoutwards {
@@ -162,7 +167,7 @@ input{
     outline-offset: 0;
     border: none;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 15px;
     transition-duration: 0.7s;
 }
 input:focus {
@@ -171,15 +176,18 @@ input:focus {
     box-shadow: #1e93a7 0px 0px 30px;
     transition-duration: 0.7s;
 }
+#add-button{
+    border-radius: 15px;
+}
 button{
     font-family: "Gloria Hallelujah", cursive;
     color: #fff9c7;
     background-color: #1e93a7;
     text-wrap: nowrap;
     border: none;
-    padding: 10px;
+    padding: 12px;
+    border-radius: 9px;
     font-size: 13px;
-    border-radius: 5px;
     margin-left: 10px;
     transition-duration: 0.4s;
 }
@@ -219,13 +227,14 @@ li{
     -webkit-user-select: text;
     color:#1e93a7;
     background-color: rgba(0, 255, 255, 0.237);
+    border: 1px solid #1e92a72d;
     padding: 10px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-block: 10px;
     font-weight: 500;
     text-wrap: wrap;
-    animation: cubic-bezier(0.68, -0.55, 0.27, 1.55) 1s slideinwards;
+    animation: cubic-bezier(0.68, -0.55, 0.27, 1.55) 1.2s slideinwards;
 }
 li.over {
     border: 2px dashed #1e93a7;
@@ -238,8 +247,7 @@ li.removing {
     animation: cubic-bezier(0.68, -0.55, 0.27, 1.55) 1s slideoutwards;
 }
 li button{
-    font-family: inherit;
-    line-height: 0.1;
+    line-height: 0.1; /* Set to 0.1 to center the text and avoid box resizing on hover*/
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -247,13 +255,15 @@ li button{
     width: 30px;
     color: #1e92a7b3;
     background-color: rgba(0, 255, 255, 0.237);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #1e92a794;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15) !important;
     user-select: none;
     box-shadow: none;
     -webkit-user-select: none;
 }
 li button:hover{
     color: #1e93a7;
+    border: none;
 }
 li button:active{
     color: rgba(255, 0, 0, 0.5);
