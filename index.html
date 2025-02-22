@@ -1,60 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Akash Sampath">
-    <meta name="description" content="Looney Lists is an aesthetically pleasing simple to use To-Do List Extension">
-    <meta name="keywords" content="ToDo, Aesthetic, ToDo List, Reminders, Toon">
-    <meta property="og:image" content="https://akashonbeats.github.io/Looney-Lists/og.jpg">
-    <link rel="icon" type="favicon" href="favicon.ico">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Bangers&family=Bigelow+Rules&family=Caveat:wght@400..700&family=Kranky&family=Markazi+Text:wght@400..700&family=Meow+Script&family=Niconne&family=Oswald:wght@200..700&family=Poiret+One&family=Style+Script&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Akash Sampath" />
+    <meta
+      name="description"
+      content="Looney Lists is an aesthetically pleasing simple to use To-Do List Extension"
+    />
+    <meta
+      name="keywords"
+      content="ToDo, Aesthetic, ToDo List, Reminders, Toon"
+    />
+    <meta
+      property="og:image"
+      content="https://akashonbeats.github.io/Looney-Lists/og.jpg"
+    />
+    <link rel="icon" type="favicon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Bangers&family=Bigelow+Rules&family=Caveat:wght@400..700&family=Kranky&family=Markazi+Text:wght@400..700&family=Meow+Script&family=Niconne&family=Oswald:wght@200..700&family=Poiret+One&family=Style+Script&display=swap"
+      rel="stylesheet"
+    />
     <title>Looney Lists</title>
-</head>
-<body>
-    <div class="apptile"> 
-        <div class="settings">
-            <div class="font-selector">
-                <label for="font-selector">Choose Font:</label>
-                <select id="font-selector">
-                    <option value="'Style Script', serif">Style Script (Classic)</option>
-                    <option value="'Caveat', serif">Caveat</option>
-                    <option value="'Markazi Text', serif">Markazi Text</option>
-                    <option value="'Oswald', serif">Oswald</option>
-                    <option value="'Poiret One', serif">Poiret One</option>
-                    <option value="'Meow Script', serif">Meow Script</option>
-                    <option value="'Bangers', serif">Bangers</option>
-                    <option value="'Atma', serif">Atma</option>
-                    <option value="'Kranky', serif">Kranky</option>
-                    <option value="'Bigelow Rules', serif">Bigelow Rules</option>
-                    <option value="'Niconne', serif">Niconne</option>
-                </select>
-            </div>
-            <h1>Configure Your Looney</h1>
+  </head>
+  <body>
+    <div class="apptile">
+      <div class="settings">
+        <div class="font-selector">
+          <label for="font-selector">Choose Font:</label>
+          <select id="font-selector">
+            <option value="'Style Script', serif">
+              Style Script (Classic)
+            </option>
+            <option value="'Caveat', serif">Caveat</option>
+            <option value="'Markazi Text', serif">Markazi Text</option>
+            <option value="'Oswald', serif">Oswald</option>
+            <option value="'Poiret One', serif">Poiret One</option>
+            <option value="'Meow Script', serif">Meow Script</option>
+            <option value="'Bangers', serif">Bangers</option>
+            <option value="'Atma', serif">Atma</option>
+            <option value="'Kranky', serif">Kranky</option>
+            <option value="'Bigelow Rules', serif">Bigelow Rules</option>
+            <option value="'Niconne', serif">Niconne</option>
+          </select>
         </div>
-        <label class="burger" for="burger">
-            <input type="checkbox" id="burger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </label>
-        <h1>Looney Lists</h1>
-        <p>An aesthetically pleasing To-Do manager</p>
-        <div class="inputwrapper">
-            <input id="input-field">
-            <button id="add-button">Add to list</button>
-        </div>
-        <h3 id="h3">Note down something...</h3>
-        
-        <ul id="todo-list">
-        </ul>
+        <h1>Configure Your Looney</h1>
+      </div>
+      <label class="burger" for="burger">
+        <input type="checkbox" id="burger" />
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      <h1>Looney Lists</h1>
+      <p>An aesthetically pleasing To-Do manager</p>
+      <div class="inputwrapper">
+        <input id="input-field" />
+        <button id="add-button">Add to list</button>
+      </div>
+      <h3 id="h3">Note down something...</h3>
+
+      <ul id="todo-list"></ul>
     </div>
-<footer>Looney<span> Lists</span> | Created by Akash Sampath.<a href="https://akashonbeats.github.io/Personal-Website/" target="_blank">Visit Website</a></footer>
-</body>
-<script src="script.js"></script>
+    <footer>
+      Looney<span> Lists</span> | Created by Akash Sampath.<a
+        href="https://akashonbeats.github.io/Personal-Website/"
+        target="_blank"
+        >Visit Website</a
+      >
+    </footer>
+  </body>
+  <script src="script.js"></script>
 </html>
