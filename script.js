@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var input = document.getElementById("input-field");
     var h3 = document.getElementById("h3");
     const addButton = document.getElementById('add-button');
+    const fontSelector = document.getElementById('font-selector');
+    const burger = document.getElementById('burger');
+    const settings = document.querySelector('.settings');
 
     // Loading the todo list from local storage when loaded
     var savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
@@ -32,6 +35,23 @@ document.addEventListener('DOMContentLoaded', function () {
     todoList.addEventListener('click', function(event) {
         if (event.target && event.target.classList.contains('delete-button')) {
             deleteEntry(event);
+        }
+    });
+
+    fontSelector.addEventListener('change', function () {
+        document.documentElement.style.setProperty('--list-font', fontSelector.value);
+        updateFontFamily();
+    });
+
+    burger.addEventListener('change', function () {
+        if (burger.checked) {
+            settings.style.display = 'flex';
+        } else {
+            settings.style.display = 'none';
+            document.querySelector('.apptile').classList.add('animate-out');
+            setTimeout(() => {
+                document.querySelector('.apptile').classList.remove('animate-out');
+            }, 700); // Duration of the animation
         }
     });
 
@@ -80,6 +100,14 @@ document.addEventListener('DOMContentLoaded', function () {
             todos.push(li.textContent.replace(" X", ""));
         });
         localStorage.setItem("todos", JSON.stringify(todos));
+    }
+
+    function updateFontFamily() {
+        const selectedFont = fontSelector.value;
+        document.querySelectorAll('li').forEach(function(li) {
+            li.style.fontFamily = selectedFont;
+        });
+        input.style.fontFamily = selectedFont;
     }
 
     // For the draggable functionality for the list elements
@@ -137,3 +165,24 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const savedFont = localStorage.getItem('selectedFont');
+    if (savedFont) {
+        document.getElementById('font-selector').value = savedFont;
+        applyFontStyle(savedFont);
+    }
+    
+    document.getElementById('font-selector').addEventListener('change', function() {
+        const selectedFont = this.value;
+        localStorage.setItem('selectedFont', selectedFont);
+        applyFontStyle(selectedFont);
+    });
+});
+
+function applyFontStyle(font) {
+    const listItems = document.querySelectorAll('li');
+    listItems.forEach(item => {
+        item.style.fontFamily = font;
+    });
+}

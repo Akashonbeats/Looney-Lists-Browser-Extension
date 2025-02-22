@@ -1,3 +1,11 @@
+@keyframes getouttablur{
+    0% {
+        filter: blur(4px);
+    }
+    100% {
+        filter: blur(0px);
+    }
+}
 @keyframes slideinwards {
     0% {
         transform: scale(0.9);
@@ -85,6 +93,11 @@
         background-color: rgba(255, 0, 0, 0.237);
     }
 }
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .redvibrate{
     animation: redvibrate 1s infinite;
     transition-duration: 0.7s;
@@ -108,6 +121,68 @@ body{
     font-weight: 900;
     user-select: none;
     -webkit-user-select: none;
+}
+.burger {
+    position: absolute;
+    top: 50px;
+    right: 40px;
+    width: 20px;
+    z-index: 1000;
+    height: 15px;
+    background: transparent;
+    cursor: pointer;
+    display: block;
+}
+
+.burger input {
+    display: none;
+}
+
+.burger span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #1e92a788;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.burger span:nth-of-type(1) {
+    top: 0px;
+    transform-origin: left center;
+}
+
+.burger span:nth-of-type(2) {
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: left center;
+}
+
+.burger span:nth-of-type(3) {
+    top: 100%;
+    transform-origin: left center;
+    transform: translateY(-100%);
+}
+
+.burger input:checked ~ span:nth-of-type(1) {
+    transform: rotate(45deg);
+    top: 6px; /* Adjust to ensure proper X formation */
+    left: 0;
+}
+
+.burger input:checked ~ span:nth-of-type(2) {
+    width: 0%;
+    opacity: 0;
+}
+
+.burger input:checked ~ span:nth-of-type(3) {
+    transform: rotate(-45deg);
+    top: 6px; /* Adjust to ensure proper X formation */
+    left: 0;
 }
 h1{
     color: #1e93a7;
@@ -136,6 +211,8 @@ p{
     margin-bottom: 25px;
 }
 .apptile{
+    position: relative;
+    z-index: 100;
     background-color: #fff9c7;
     padding: 15px;
     margin-bottom: 7px;
@@ -150,12 +227,84 @@ p{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
+.apptile.animate-out {
+    animation: cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.7s getouttablur;
+}
+.settings{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+    background-color: #fff9c7;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    padding-top: 40px;
+    animation: cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.7s getouttablur;
+}
+.font-selector {
+    margin-top: 60px;
+    font-family: "Style Script", serif;
+    color: #1e93a7;
+    background-color: rgba(0, 255, 255, 0.237);
+    border: 2px dashed #1e93a7;
+    border-radius: 15px;
+    padding: 10px;
+    padding-top: 25px;
+    width: 100%;
+    transition-duration: 0.7s;
+}
+#font-selector{
+    margin-top: 2px;
+}
+.font-selector label{
+    color: #1e93a7;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.font-selector select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-family: inherit;
+    color: inherit;
+    width: 100%;
+    background-color: inherit;
+    font-size: 1rem;
+    border: 1px solid #1e92a72d;
+    outline: none;
+    padding: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.font-selector select::-ms-expand {
+    display: none;
+}
+
+.font-selector select option {
+    font-family: inherit;
+    color: #1e93a7;
+    background-color: #fff9c7;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+.settings h1{
+    position: absolute; /* This needs to be figured out later on */
+    font-size: 1.8rem;
+    margin-top: 35px;
+}
 .inputwrapper{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
 }
 input{
@@ -247,6 +396,7 @@ li.removing {
     animation: cubic-bezier(0.68, -0.55, 0.27, 1.55) 1s slideoutwards;
 }
 li button{
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 0.1; /* Set to 0.1 to center the text and avoid box resizing on hover*/
     display: inline-flex;
     justify-content: center;
