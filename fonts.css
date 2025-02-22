@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Atma';
+    src: url('../fonts/Atma-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Bangers';
+    src: url('../fonts/Bangers-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Caveat';
+    src: url('../fonts/Caveat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Kranky';
+    src: url('../fonts/Kranky-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Markazi Text';
+    src: url('../fonts/MarkaziText-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Meow Script';
+    src: url('../fonts/MeowScript-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Oswald';
+    src: url('../fonts/Oswald-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poiret One';
+    src: url('../fonts/PoiretOne-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Style Script';
+    src: url('../fonts/StyleScript-Regular.ttf') format('truetype');
+}
