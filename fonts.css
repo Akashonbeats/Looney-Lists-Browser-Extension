@@ -42,7 +42,13 @@
     font-family: 'Style Script';
     src: url('../fonts/StyleScript-Regular.ttf') format('truetype');
 }
+
 @font-face {
     font-family: 'The Last Of Us Rough';
     src: url('../fonts/The-Last-Of-Us-Rough.ttf') format('truetype');
+}
+
+@font-face{
+    font-family: 'Niconne';
+    src: url('../fonts/Niconne-Regular.ttf') format('truetype');
 }
