@@ -251,6 +251,7 @@ p {
 }
 #font-selector {
   margin-top: 2px;
+  text-align: center;
 }
 .font-selector label {
   color: #1e93a7;
@@ -266,24 +267,26 @@ p {
   width: 100%;
   background-color: inherit;
   font-size: 1rem;
-  border: 1px solid #1e92a72d;
+  border: 2px dashed #1e92a76f;
   outline: none;
   padding: 5px;
   border-radius: 8px;
   cursor: pointer;
 }
-
 .font-selector select::-ms-expand {
   display: none;
 }
-
 .font-selector select option {
   font-family: inherit;
   color: #1e93a7;
-  background-color: #fff9c7;
+  background-color: rgb(195, 250, 212);
   border: none;
   padding: 5px;
   border-radius: 5px;
+}
+.font-selector select option:checked {
+  background-color: #1e93a7;
+  color: #fff9c7;
 }
 .settings h1 {
   position: absolute; /* This needs to be figured out later on */
