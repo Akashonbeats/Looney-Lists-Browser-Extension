@@ -210,7 +210,7 @@ p {
   margin-inline: 7px;
   border-style: dashed;
   border-color: #11dbff;
-  border-radius: 20px;
+  border-radius: 30px;
   overflow: auto;
   scrollbar-width: none;
   transition-duration: 2s;
@@ -272,6 +272,9 @@ p {
   padding: 5px;
   border-radius: 8px;
   cursor: pointer;
+}
+.font-selector select:hover{
+  background-color: #1e92a73f;
 }
 .font-selector select::-ms-expand {
   display: none;
