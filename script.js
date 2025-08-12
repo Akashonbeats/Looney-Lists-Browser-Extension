@@ -125,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
     entry.addEventListener("dragleave", handleDragLeave, false);
     entry.addEventListener("drop", handleDrop, false);
     entry.addEventListener("dragend", handleDragEnd, false);
+    entry.addEventListener("dblclick", handleDoubleClick, false);
   }
 
   function handleDragStart(e) {
@@ -168,6 +169,91 @@ document.addEventListener("DOMContentLoaded", function () {
     this.style.opacity = "1";
     todoList.querySelectorAll("li").forEach(function (item) {
       item.classList.remove("over");
+    });
+  }
+
+  function handleDoubleClick(e) {
+    e.stopPropagation();
+    const listItem = this;
+    const deleteButton = listItem.querySelector(".delete-button");
+
+    // Get current text content (excluding the delete button)
+    const currentText = listItem.textContent.replace(" X", "").trim();
+
+    // Make the li element editable
+    listItem.contentEditable = true;
+    listItem.style.cursor = "text";
+
+    // Hide delete button during editing
+    if (deleteButton) {
+      deleteButton.style.display = "none";
+    }
+
+    // Set text content and focus
+    listItem.textContent = currentText;
+    listItem.focus();
+
+    // Select all text
+    const range = document.createRange();
+    range.selectNodeContents(listItem);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    // Handle save on Enter or blur
+    function saveEdit() {
+      const newText = listItem.textContent.trim();
+
+      // Remove editing styles
+      listItem.contentEditable = false;
+      listItem.style.cursor = "move";
+      listItem.style.outline = "";
+      listItem.style.outlineOffset = "";
+
+      if (newText !== "") {
+        // Update content with delete button
+        listItem.innerHTML =
+          newText + " <button class='delete-button'>X</button>";
+        listItem.style.fontFamily =
+          localStorage.getItem("selectedFont") || fontSelector.value;
+        addDragAndDropHandlers(listItem);
+        saveTodos();
+      } else {
+        // If empty, restore original content
+        listItem.innerHTML =
+          currentText + " <button class='delete-button'>X</button>";
+        listItem.style.fontFamily =
+          localStorage.getItem("selectedFont") || fontSelector.value;
+        addDragAndDropHandlers(listItem);
+      }
+    }
+
+    // Save on Enter key
+    listItem.addEventListener("keydown", function handleEnter(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        listItem.removeEventListener("keydown", handleEnter);
+        saveEdit();
+      } else if (event.key === "Escape") {
+        event.preventDefault();
+        listItem.removeEventListener("keydown", handleEnter);
+        // Cancel editing
+        listItem.contentEditable = false;
+        listItem.style.cursor = "move";
+        listItem.style.outline = "";
+        listItem.style.outlineOffset = "";
+        listItem.innerHTML =
+          currentText + " <button class='delete-button'>X</button>";
+        listItem.style.fontFamily =
+          localStorage.getItem("selectedFont") || fontSelector.value;
+        addDragAndDropHandlers(listItem);
+      }
+    });
+
+    // Save on blur (clicking outside)
+    listItem.addEventListener("blur", function handleBlur() {
+      listItem.removeEventListener("blur", handleBlur);
+      saveEdit();
     });
   }
 });

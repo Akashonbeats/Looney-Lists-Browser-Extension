@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Looney Lists",
-  "version": "3.1",
+  "version": "3.2",
   "description": "An aesthetically pleasing simple to use To-Do List App",
   "permissions": ["storage"],
   "action": {

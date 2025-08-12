@@ -273,7 +273,7 @@ p {
   border-radius: 8px;
   cursor: pointer;
 }
-.font-selector select:hover{
+.font-selector select:hover {
   background-color: #1e92a73f;
 }
 .font-selector select::-ms-expand {
@@ -363,7 +363,7 @@ ul {
   list-style: none;
 }
 li {
-  cursor: move;
+  /* cursor: move; */
   display: flex;
   justify-content: space-between;
   gap: 10px;
@@ -416,6 +416,13 @@ li button:active {
   outline: 2px dashed rgba(255, 0, 0, 0.5);
   background-color: rgba(255, 0, 0, 0.237);
   transition-duration: 0.1s;
+}
+
+li[contenteditable="true"] {
+  box-shadow: #1e93a7 0px 0px 15px;
+  outline: 2px dashed #1e93a7;
+  outline-offset: 0;
+  transition: box-shadow 0.6s ease-in-out;
 }
 footer {
   width: 100%;
