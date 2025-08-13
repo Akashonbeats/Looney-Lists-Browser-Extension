@@ -176,6 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
     e.stopPropagation();
     const listItem = this;
     const deleteButton = listItem.querySelector(".delete-button");
+    let committed = false; // prevent double save (Enter then blur)
 
     // Get current text content (excluding the delete button)
     const currentText = listItem.textContent.replace(" X", "").trim();
@@ -213,7 +214,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Handle save on Enter or blur
     function saveEdit() {
+      if (committed) return; // already saved
       const newText = listItem.textContent.trim();
+      // Remove any trailing standalone X that belonged to the delete button previously
+      const cleaned = newText.replace(/\s*X$/, "");
+      committed = true;
 
       // Remove editing styles
       listItem.contentEditable = false;
@@ -221,10 +226,10 @@ document.addEventListener("DOMContentLoaded", function () {
       listItem.style.outline = "";
       listItem.style.outlineOffset = "";
 
-      if (newText !== "") {
+      if (cleaned !== "") {
         // Update content with delete button
         listItem.innerHTML =
-          newText + " <button class='delete-button'>X</button>";
+          cleaned + " <button class='delete-button'>X</button>";
         listItem.style.fontFamily =
           localStorage.getItem("selectedFont") || fontSelector.value;
         addDragAndDropHandlers(listItem);
