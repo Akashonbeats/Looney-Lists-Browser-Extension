@@ -193,12 +193,23 @@ document.addEventListener("DOMContentLoaded", function () {
     listItem.textContent = currentText;
     listItem.focus();
 
-    // Select all text
-    const range = document.createRange();
-    range.selectNodeContents(listItem);
-    const selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
+    // Place caret at end (no full selection)
+    try {
+      const range = document.createRange();
+      range.selectNodeContents(listItem);
+      range.collapse(false); // collapse to end
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    } catch (err) {
+      // Fallback for very old browsers (unlikely needed)
+      if (document.body.createTextRange) {
+        const textRange = document.body.createTextRange();
+        textRange.moveToElementText(listItem);
+        textRange.collapse(false);
+        textRange.select();
+      }
+    }
 
     // Handle save on Enter or blur
     function saveEdit() {
@@ -206,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Remove editing styles
       listItem.contentEditable = false;
-      listItem.style.cursor = "move";
+      listItem.style.cursor = "auto";
       listItem.style.outline = "";
       listItem.style.outlineOffset = "";
 
@@ -239,7 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
         listItem.removeEventListener("keydown", handleEnter);
         // Cancel editing
         listItem.contentEditable = false;
-        listItem.style.cursor = "move";
+        listItem.style.cursor = "auto";
         listItem.style.outline = "";
         listItem.style.outlineOffset = "";
         listItem.innerHTML =

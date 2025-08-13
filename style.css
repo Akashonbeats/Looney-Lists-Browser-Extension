@@ -363,7 +363,6 @@ ul {
   list-style: none;
 }
 li {
-  /* cursor: move; */
   display: flex;
   justify-content: space-between;
   gap: 10px;
