@@ -175,9 +175,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function handleDoubleClick(e) {
     e.stopPropagation();
+    // If this item is already in edit mode, let the browser's native double-click
+    // behavior (word selection) proceed without re-initializing editing.
+    if (this.isContentEditable) {
+      return; // don't reposition caret to end again
+    }
     if (isEditingAny && !this.isContentEditable) {
-      // Prevent starting a second edit session simultaneously
-      return;
+      return; // another item is being edited; ignore
     }
     const listItem = this;
     const deleteButton = listItem.querySelector(".delete-button");
