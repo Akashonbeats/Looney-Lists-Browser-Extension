@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const fontSelector = document.getElementById("font-selector");
   const burger = document.getElementById("burger");
   const settings = document.querySelector(".settings");
+  let isEditingAny = false; // track global edit mode
 
   // Loading the todo list from local storage when loaded
   var savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
@@ -174,6 +175,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function handleDoubleClick(e) {
     e.stopPropagation();
+    if (isEditingAny && !this.isContentEditable) {
+      // Prevent starting a second edit session simultaneously
+      return;
+    }
     const listItem = this;
     const deleteButton = listItem.querySelector(".delete-button");
     let committed = false; // prevent double save (Enter then blur)
@@ -184,6 +189,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Make the li element editable
     listItem.contentEditable = true;
     listItem.style.cursor = "text";
+    isEditingAny = true;
+    disableDragging();
 
     // Hide delete button during editing
     if (deleteButton) {
@@ -242,6 +249,8 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.getItem("selectedFont") || fontSelector.value;
         addDragAndDropHandlers(listItem);
       }
+      isEditingAny = false;
+      enableDragging();
     }
 
     // Save on Enter key
@@ -263,6 +272,8 @@ document.addEventListener("DOMContentLoaded", function () {
         listItem.style.fontFamily =
           localStorage.getItem("selectedFont") || fontSelector.value;
         addDragAndDropHandlers(listItem);
+        isEditingAny = false;
+        enableDragging();
       }
     });
 
@@ -270,6 +281,18 @@ document.addEventListener("DOMContentLoaded", function () {
     listItem.addEventListener("blur", function handleBlur() {
       listItem.removeEventListener("blur", handleBlur);
       saveEdit();
+    });
+  }
+
+  function disableDragging() {
+    todoList.querySelectorAll("li").forEach((li) => {
+      li.setAttribute("draggable", "false");
+    });
+  }
+
+  function enableDragging() {
+    todoList.querySelectorAll("li").forEach((li) => {
+      li.setAttribute("draggable", "true");
     });
   }
 });
